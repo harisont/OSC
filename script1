@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#script che scrive sulla console i propri argomenti e il loro numero
+
+echo -e "\nNumero argomenti: $#\n"
+if [ $1 ] ; then	#controlla che vi sia almeno un argomento
+	for NOME in $@ ; do
+		echo "Argomento: $NOME";
+	done
+else 
+	echo "Nessun argomento";
+fi
