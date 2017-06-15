@@ -56,7 +56,7 @@ int main(int argc, char const *argv[]) {
     exit (2);
   }
 
-  memcpy(target, source, size);                         /*copia il file di input nel file di output. Con memcpy() le
+  memcpy(target,source, size);                         /*copia il file di input nel file di output. Con memcpy() le
                                                           rispettive zone di memoria non devono sovrapporsi*/
   munmap(source, size);                                 //eliminazione mappatura file di input
   munmap(target, size);                                 //eliminazione mappatura file di output
