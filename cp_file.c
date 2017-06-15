@@ -34,8 +34,8 @@ int main(int argc, char const *argv[]) {
                                                           file. Il secondo parametro (off_t offset) è il punto nel file
                                                           da cui inizia la mappatura. In pratica calcola la dimensione
                                                           del file di input.*/
-  lseek(out, size - 1, SEEK_SET);                       //imposta la posizione corrente all'ultima del file di output
-  char end='\0';
+  lseek(out, size + 1, SEEK_SET);                       //imposta la posizione corrente all'ultima del file di output
+  char end='EOF';
   write(out, &end, 1);                                  /*scrive il carattere di terminazione nell'ultima posizione
                                                           del file di output*/
   void *source, *target;
@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]) {
     exit (1);
   }
 
-  target=mmap(0, size, PROT_READ, MAP_SHARED, out, 0);  /*MAPPATURA FILE DI OUTPUT*/
+  target=mmap(0, size, PROT_WRITE, MAP_SHARED, out, 0);  /*MAPPATURA FILE DI OUTPUT*/
   if (target==MAP_FAILED) {
     perror("ERRORE DURANTE IL MAPPING DEL FILE DI OUTPUT\n");
     exit (2);
