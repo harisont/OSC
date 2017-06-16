@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
     perror("APERTURA FILE INPUT FALLITA\n");
     exit(2);
   }
-  out= open(argv[2], O_RDWR | O_CREAT);
+  out= open(argv[2], O_RDWR | O_CREAT, 0666);
   if (out==-1) {
     close(in);
     perror("APERTURA FILE OUTPUT FALLITA\n");
